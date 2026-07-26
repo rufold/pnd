@@ -1,30 +1,40 @@
+/* =========================
+   PND Creative Team Page
+   ========================= */
+
 .team-page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 3rem 1.5rem;
+    padding: 4rem 2rem;
 }
 
+
+/* Logo */
 
 .team-logo {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 5rem;
+    margin-bottom: 7rem;
 }
 
 .team-logo img {
-    width: min(320px, 80vw);
+    width: min(320px, 75vw);
     height: auto;
 }
 
 
+/* Team grid */
+
 .team {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
-    margin-bottom: 6rem;
+    gap: 3rem;
+    margin-bottom: 8rem;
 }
 
+
+/* Individual artists */
 
 .member {
     text-align: center;
@@ -33,6 +43,7 @@
 
 .member a {
     display: block;
+    overflow: hidden;
 }
 
 
@@ -41,30 +52,96 @@
     aspect-ratio: 3 / 4;
     object-fit: cover;
     display: block;
+
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+
+/* subtle artistic hover */
+
+.member:hover img {
+    transform: scale(1.03);
+    filter: brightness(0.92);
 }
 
 
 .member h3 {
-    margin-top: 1.2rem;
-    margin-bottom: 0.3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
 }
 
 
-.member p {
-    margin: 0;
-    opacity: 0.7;
+/* Activity section */
+
+.activity {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+
+    padding-top: 2rem;
 }
 
+
+.activity h2 {
+    text-align: center;
+
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    margin-bottom: 3rem;
+}
+
+
+.activity p {
+    font-size: 1.15rem;
+    line-height: 2;
+    font-weight: 300;
+}
+
+
+/* A subtle divider */
+
+.activity::before {
+    content: "";
+    display: block;
+
+    width: 80px;
+    height: 1px;
+
+    margin: 0 auto 4rem;
+}
+
+
+/* Responsive */
 
 @media (max-width: 900px) {
+
     .team {
         grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
     }
+
 }
 
 
 @media (max-width: 550px) {
+
+    .team-page {
+        padding: 2rem 1rem;
+    }
+
     .team {
         grid-template-columns: 1fr;
     }
+
+    .activity h2 {
+        font-size: 1.6rem;
+    }
+
 }
