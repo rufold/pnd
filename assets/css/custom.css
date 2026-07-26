@@ -1,0 +1,61 @@
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     margin: 0;
+     min-height: 100vh;
+     background: #f5f3ef;
+     font-family: Georgia, serif;
+     color: #222;
+ }
+
+ .page {
+     max-width: 1100px;
+     margin: auto;
+     padding: 40px;
+ }
+
+ .logo {
+     text-align: center;
+     margin-bottom: 60px;
+ }
+
+ .logo img {
+     width: 220px;
+ }
+
+ .hero {
+     display: grid;
+     grid-template-columns: 350px 1fr;
+     gap: 60px;
+     align-items: center;
+ }
+
+ .portrait img {
+     width: 100%;
+     border-radius: 4px;
+     aspect-ratio: 3/4;
+     object-fit: cover;
+ }
+
+ .text h1 {
+     font-size: 3rem;
+     margin-top: 0;
+ }
+
+ .text p {
+     font-size: 1.2rem;
+     line-height: 1.7;
+ }
+
+ @media (max-width: 800px) {
+     .hero {
+         grid-template-columns: 1fr;
+     }
+
+     .portrait {
+         max-width: 350px;
+         margin: auto;
+     }
+ }

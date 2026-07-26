@@ -4,3 +4,6 @@ title = "Painting's not dead"
 theme = "blowfish"
 
 enableRobotsTXT = true
+
+[params]
+customCSS = ["css/custom.css"]
