@@ -1,3 +1,6 @@
-baseURL = 'https://example.org/'
-locale = 'en-us'
-title = 'My New Hugo Project'
+baseURL = "https://pnd.org.pl/"
+locale = "pl-PL"
+title = "Paintings not dead"
+theme = "blowfish"
+
+enableRobotsTXT = true
