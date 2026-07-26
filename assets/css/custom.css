@@ -1,61 +1,70 @@
- * {
-     box-sizing: border-box;
- }
+.team-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
 
- body {
-     margin: 0;
-     min-height: 100vh;
-     background: #f5f3ef;
-     font-family: Georgia, serif;
-     color: #222;
- }
 
- .page {
-     max-width: 1100px;
-     margin: auto;
-     padding: 40px;
- }
+.team-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+}
 
- .logo {
-     text-align: center;
-     margin-bottom: 60px;
- }
+.team-logo img {
+    width: min(320px, 80vw);
+    height: auto;
+}
 
- .logo img {
-     width: 220px;
- }
 
- .hero {
-     display: grid;
-     grid-template-columns: 350px 1fr;
-     gap: 60px;
-     align-items: center;
- }
+.team {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 6rem;
+}
 
- .portrait img {
-     width: 100%;
-     border-radius: 4px;
-     aspect-ratio: 3/4;
-     object-fit: cover;
- }
 
- .text h1 {
-     font-size: 3rem;
-     margin-top: 0;
- }
+.member {
+    text-align: center;
+}
 
- .text p {
-     font-size: 1.2rem;
-     line-height: 1.7;
- }
 
- @media (max-width: 800px) {
-     .hero {
-         grid-template-columns: 1fr;
-     }
+.member a {
+    display: block;
+}
 
-     .portrait {
-         max-width: 350px;
-         margin: auto;
-     }
- }
+
+.member img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+}
+
+
+.member h3 {
+    margin-top: 1.2rem;
+    margin-bottom: 0.3rem;
+}
+
+
+.member p {
+    margin: 0;
+    opacity: 0.7;
+}
+
+
+@media (max-width: 900px) {
+    .team {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 550px) {
+    .team {
+        grid-template-columns: 1fr;
+    }
+}

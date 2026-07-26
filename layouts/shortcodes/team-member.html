@@ -1,0 +1,10 @@
+{{ $image := resources.Get (.Get "src") }}
+
+<figure>
+    <a href="{{ $image.RelPermalink }}" data-zoomable>
+        <img 
+            src="{{ ($image.Fill "400x533").RelPermalink }}"
+            alt="{{ .Get "alt" }}"
+        >
+    </a>
+</figure>

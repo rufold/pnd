@@ -3,31 +3,51 @@
 <div class="team-page">
 
     <div class="team-logo">
-        <img src="/images/logo.png" alt="Logo">
+        {{ $logo := resources.Get "images/logo.png" }}
+
+        {{ if $logo }}
+        <img src="{{ $logo.RelPermalink }}" alt="Logo">
+        {{ else }}
+        <p>Logo not found</p>
+        {{ end }}
     </div>
 
 
     <section class="team">
 
-        <div class="member">
-            <img src="/images/people/mikolaj-harmoza.jpg">
-            <h3>Mikołaj Harmoza</h3>
-        </div>
+        {{ $people := slice
+        (dict "image" "mikolaj-harmoza.jpg" "name" "Mikołaj Harmoza")
+        (dict "image" "person2.jpg" "name" "Name Two")
+        (dict "image" "person3.jpg" "name" "Name Three")
+        (dict "image" "person4.jpg" "name" "Name Four")
+        }}
+
+
+        {{ range $people }}
+
+        {{ $portrait := resources.Get (printf "images/%s" .image) }}
 
         <div class="member">
-            <img src="/images/person2.jpg">
-            <h3>Name Two</h3>
+
+            {{ if $portrait }}
+
+            <a href="{{ $portrait.RelPermalink }}" class="lightbox" data-zoomable>
+                <img src="{{ ($portrait.Fill "400x533").RelPermalink }} " alt="{{ .name }}">
+
+            </a>
+            <h3>{{ .name }}</h3>
+
+            {{ else }}
+
+            <p>
+                Missing image: {{ .image }}
+            </p>
+
+            {{ end }}
+
         </div>
 
-        <div class="member">
-            <img src="/images/person3.jpg">
-            <h3>Name Three</h3>
-        </div>
-
-        <div class="member">
-            <img src="/images/person4.jpg">
-            <h3>Name Four</h3>
-        </div>
+        {{ end }}
 
     </section>
 
@@ -40,15 +60,27 @@
             Odbywamy podróż artystyczną, której celem jest stworzenie nowej przestrzeni związanej ze sztuką, a
             konkretnie z malarstwem, jego aktualnym dorobkiem i znaczeniem dla współczesnej kultury.
 
+            <br>
+            <br>
+
             Zaznaczamy swoją obecność poprzez interwencje artystyczne w przestrzeniach publicznych, które finalizujemy
             ustanowieniem placu, ulicy bądź punktu o nazwie przywołującej nasz koncept.
+
+            <br>
+            <br>
 
             Miejsca te, tworzone według estetyki poszczególnych miast zaznaczamy na mapie Europy jako punkty Nowej
             Przestrzeni dla sztuki, która jest dla nas bezcenna.
 
+            <br>
+            <br>
+
             Zapraszamy do śledzenia naszej akcji i związanych z nią interwencji artystycznych, a także do śledzenia
             działań naszej grupy.
 
+            <br>
+
+            <br>
             Akcja jest zwiastunem wielu działań w zakresie sztuki grupy artystów, którzy poprzez swoją twórczość
             odwołuja się do idei PND (o czym szerzej niebawem).
         </p>

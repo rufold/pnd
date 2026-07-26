@@ -7,3 +7,6 @@ enableRobotsTXT = true
 
 [params]
 customCSS = ["css/custom.css"]
+
+[params.article]
+showImageZoom = true
