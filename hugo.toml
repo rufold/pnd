@@ -1,6 +1,6 @@
 baseURL = "https://pnd.org.pl/"
 locale = "pl-PL"
-title = "Paintings not dead"
+title = "Painting's not dead"
 theme = "blowfish"
 
 enableRobotsTXT = true
