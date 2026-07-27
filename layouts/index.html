@@ -16,10 +16,32 @@
     <section class="team">
 
         {{ $people := slice
-        (dict "image" "mikolaj-harmoza.jpg" "name" "Mikołaj Harmoza")
-        (dict "image" "person2.jpg" "name" "Name Two")
-        (dict "image" "person3.jpg" "name" "Name Three")
-        (dict "image" "person4.jpg" "name" "Name Four")
+        (dict
+        "id" "mikolaj"
+        "image" "mikolaj-harmoza.jpg"
+        "name" "Mikołaj Harmoza"
+        "bio" "artysta malarz, wykładowca ASP w Gdańsku"
+        )
+
+        (dict
+        "id" "person2"
+        "image" "osoba2.jpg"
+        "name" "Name Two"
+        "bio" "bio2")
+
+        (dict
+        "id" "person3"
+        "image" "osoba3.jpg"
+        "name" "Name Three"
+        "bio" "bio3"
+        )
+
+        (dict
+        "id" "person4"
+        "image" "osoba4.jpg"
+        "name" "Name Four"
+        "bio" "bio4"
+        )
         }}
 
 
@@ -31,8 +53,10 @@
 
             {{ if $portrait }}
 
-            <a href="{{ $portrait.RelPermalink }}" class="lightbox" data-zoomable>
-                <img src="{{ ($portrait.Fill "400x533").RelPermalink }}" alt="{{ .name }}">
+            <a href="#" class="member-link" data-member="{{ .id }}" data-image="{{ $portrait.RelPermalink }}"
+                data-name="{{ .name }}" data-bio="{{ .bio }}" onclick="return false;">
+                <!-- <a href="{{ $portrait.RelPermalink }}" class="lightbox" data-zoomable> -->
+                <img src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}">
 
             </a>
             <h3>{{ .name }}</h3>
@@ -88,5 +112,52 @@
     </section>
 
 </div>
+
+<div id="member-modal" class="member-modal">
+    <div class="member-modal-content">
+        <button id="modal-close">&times;</button>
+        <img id="modal-image">
+        <h2 id="modal-name"></h2>
+        <p id="modal-bio"></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("member-modal");
+        const modalImage = document.getElementById("modal-image");
+        const modalName = document.getElementById("modal-name");
+        const modalBio = document.getElementById("modal-bio");
+        const closeButton = document.getElementById("modal-close");
+
+        document.querySelectorAll(".member-link").forEach(link => {
+            link.addEventListener("click", () => {
+                modalImage.src = link.dataset.image;
+                modalImage.alt = link.dataset.name;
+
+                modalName.textContent = link.dataset.name;
+                modalBio.textContent = link.dataset.bio;
+
+                modal.classList.add("open");
+            });
+        });
+
+        closeButton.addEventListener("click", () => {
+            modal.classList.remove("open");
+        });
+
+        modal.addEventListener("click", (event) => {
+            if (event.target == modal) {
+                modal.classList.remove("open");
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key == "Escape") {
+                modal.classList.remove("open");
+            }
+        });
+    });
+</script>
 
 {{ end }}

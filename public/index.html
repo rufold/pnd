@@ -5,7 +5,7 @@
   class="scroll-smooth"
   data-default-appearance="light"
   data-auto-appearance="true"><head>
-	<meta name="generator" content="Hugo 0.164.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=14685&amp;path=livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.164.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=3699&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   
     <meta http-equiv="content-language" content="pl-PL">
@@ -35,7 +35,7 @@
   
   
   
-  <link rel="canonical" href="http://localhost:14685/">
+  <link rel="canonical" href="http://localhost:3699/">
   
   
     
@@ -47,7 +47,7 @@
   
 
   
-  <meta property="og:url" content="http://localhost:14685/">
+  <meta property="og:url" content="http://localhost:3699/">
 	<meta property="og:site_name" content="Painting&#39;s not dead">
 	<meta property="og:title" content="Painting&#39;s not dead">
 	<meta property="og:locale" content="pl_PL">
@@ -102,8 +102,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.b6f13f4bf1790b0ad5e843283509e8d6e1be6c672aa2d06a5bb4fd7795a855c15d54ad0ad64e13764e7957900128cde9635d9e87cb95d84323c0c617eed8d55e.css"
-    integrity="sha512-tvE/S/F5CwrV6EMoNQno1uG&#43;bGcqotBqW7T9d5WoVcFdVK0K1k4Tdk55V5ABKM3pY12eh8uV2EMjwMYX7tjVXg==">
+    href="/css/main.bundle.min.673274d331b424514c02c752e8f60ee073ba96055d40174c518398e10e69323827105e3b79c1df3612af2e295ff48968f4330d7f8558dd7c01bde65a1b2ec9c7.css"
+    integrity="sha512-ZzJ00zG0JFFMAsdS6PYO4HO6lgVdQBdMUYOY4Q5pMjgnEF47ecHfNhKvLilf9Ilo9DMNf4VY3XwBveZaGy7Jxw==">
 
   
   
@@ -212,11 +212,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "http://localhost:14685/",
+    "@id": "http://localhost:3699/",
     "name": "Painting\u0027s not dead",
     
     "inLanguage": "pl-PL",
-    "url": "http://localhost:14685/",
+    "url": "http://localhost:3699/",
     
     "publisher" : {
       "@type": "Person",
@@ -397,7 +397,9 @@
 
             
 
-            <a href="/images/mikolaj-harmoza.jpg" class="lightbox" data-zoomable>
+            <a href="#" class="member-link" data-member="mikolaj" data-image="/images/mikolaj-harmoza.jpg"
+                data-name="Mikołaj Harmoza" data-bio="artysta malarz, wykładowca ASP w Gdańsku" onclick="return false;">
+                
                 <img src="/images/mikolaj-harmoza_hu_cc0b9f6f8bb01d41.jpg" alt="Mikołaj Harmoza">
 
             </a>
@@ -416,7 +418,7 @@
             
 
             <p>
-                Missing image: person2.jpg
+                Missing image: osoba2.jpg
             </p>
 
             
@@ -432,7 +434,7 @@
             
 
             <p>
-                Missing image: person3.jpg
+                Missing image: osoba3.jpg
             </p>
 
             
@@ -448,7 +450,7 @@
             
 
             <p>
-                Missing image: person4.jpg
+                Missing image: osoba4.jpg
             </p>
 
             
@@ -496,6 +498,53 @@
     </section>
 
 </div>
+
+<div id="member-modal" class="member-modal">
+    <div class="member-modal-content">
+        <button id="modal-close">&times;</button>
+        <img id="modal-image">
+        <h2 id="modal-name"></h2>
+        <p id="modal-bio"></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("member-modal");
+        const modalImage = document.getElementById("modal-image");
+        const modalName = document.getElementById("modal-name");
+        const modalBio = document.getElementById("modal-bio");
+        const closeButton = document.getElementById("modal-close");
+
+        document.querySelectorAll(".member-link").forEach(link => {
+            link.addEventListener("click", () => {
+                modalImage.src = link.dataset.image;
+                modalImage.alt = link.dataset.name;
+
+                modalName.textContent = link.dataset.name;
+                modalBio.textContent = link.dataset.bio;
+
+                modal.classList.add("open");
+            });
+        });
+
+        closeButton.addEventListener("click", () => {
+            modal.classList.remove("open");
+        });
+
+        modal.addEventListener("click", (event) => {
+            if (event.target == modal) {
+                modal.classList.remove("open");
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key == "Escape") {
+                modal.classList.remove("open");
+            }
+        });
+    });
+</script>
 
 
         

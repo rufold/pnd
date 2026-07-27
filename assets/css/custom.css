@@ -30,7 +30,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
 }
 
 
@@ -143,5 +143,95 @@
     .activity h2 {
         font-size: 1.6rem;
     }
+
+}
+
+/* ---------- Modal ---------- */
+
+.member-modal {
+
+    position: fixed;
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(8px);
+
+    z-index: 9999;
+
+    padding: 2rem;
+
+}
+
+
+.member-modal.open {
+
+    display: flex;
+
+}
+
+
+.member-modal-content {
+
+    background: rgb(63, 49, 49);
+
+    max-width: 900px;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 350px 1fr;
+
+    gap: 2rem;
+
+    padding: 2rem;
+
+    position: relative;
+
+    border-radius: 6px;
+
+}
+
+
+#modal-image {
+
+    width: 100%;
+    display: block;
+
+}
+
+
+#modal-name {
+
+    margin-top: 0;
+
+    font-size: 2rem;
+
+}
+
+
+#modal-bio {
+
+    line-height: 1.8;
+
+}
+
+
+#modal-close {
+
+    position: absolute;
+
+    right: 20px;
+    top: 20px;
+
+    background: none;
+    border: none;
+
+    font-size: 2rem;
+
+    cursor: pointer;
 
 }

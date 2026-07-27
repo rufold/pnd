@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>People on Painting&#39;s not dead</title>
-    <link>http://localhost:14685/people/</link>
+    <link>http://localhost:3699/people/</link>
     <description>Recent content in People on Painting&#39;s not dead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl-PL</language>
     <copyright>© 2026 </copyright>
-    <atom:link href="http://localhost:14685/people/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:3699/people/index.xml" rel="self" type="application/rss+xml" />
     
   </channel>
 </rss>
