@@ -1,7 +1,3 @@
-/* =========================
-   PND Creative Team Page
-   ========================= */
-
 .team-page {
     max-width: 1200px;
     margin: 0 auto;
@@ -15,7 +11,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 7rem;
+    margin-bottom: 1rem;
 }
 
 .team-logo img {
@@ -30,11 +26,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 
-/* Individual artists */
+/* Artists */
 
 .member {
     text-align: center;
@@ -57,7 +53,7 @@
 }
 
 
-/* subtle artistic hover */
+/* hover */
 
 .member:hover img {
     transform: scale(1.03);
@@ -75,14 +71,14 @@
 }
 
 
-/* Activity section */
+/* Activity */
 
 .activity {
     max-width: 850px;
     margin: 0 auto;
     text-align: center;
 
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 
 
@@ -105,7 +101,7 @@
 }
 
 
-/* A subtle divider */
+/* Activity divider */
 
 .activity::before {
     content: "";
@@ -149,89 +145,218 @@
 /* ---------- Modal ---------- */
 
 .member-modal {
-
     position: fixed;
     inset: 0;
-
     display: none;
-
     justify-content: center;
     align-items: center;
-
     background: rgba(0, 0, 0, .8);
     backdrop-filter: blur(8px);
-
     z-index: 9999;
-
     padding: 2rem;
 
 }
 
 
 .member-modal.open {
-
     display: flex;
-
 }
 
 
 .member-modal-content {
-
-    background: rgb(63, 49, 49);
-
+    /* background: rgb(63, 49, 49); */
     max-width: 900px;
     width: 100%;
-
     display: grid;
     grid-template-columns: 350px 1fr;
-
     gap: 2rem;
-
     padding: 2rem;
-
     position: relative;
-
     border-radius: 6px;
-
 }
 
 
 #modal-image {
-
     width: 100%;
     display: block;
-
 }
 
 
 #modal-name {
-
     margin-top: 0;
-
     font-size: 2rem;
-
 }
 
 
 #modal-bio {
-
     line-height: 1.8;
-
 }
 
 
 #modal-close {
-
     position: absolute;
-
     right: 20px;
     top: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+
+}
+
+.statute-content {
+    display: block;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow-y: auto;
+
+    /* background: rgb(52, 49, 63) !important; */
+    color: white !important;
+    padding: 2rem;
+    position: relative;
+    border-radius: 6px;
+}
+
+.statute-content h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.statute-text {
+    line-height: 1.8;
+}
+
+.statute-text p {
+    margin: 0 0 1rem;
+}
+
+.statute-text h3 {
+    text-align: center;
+    margin: 2rem 0 1rem;
+}
+
+.statute-content h2,
+.statute-content h3,
+.statute-content p,
+.statute-content li {
+    color: white !important;
+}
+
+#statute-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
 
     background: none;
     border: none;
 
+    color: white !important;
+
     font-size: 2rem;
-
     cursor: pointer;
+}
 
+.statute-text ol {
+    margin: 1rem 0 1rem 2rem;
+    padding-left: 1.5rem;
+}
+
+.statute-text>ol {
+    list-style-type: decimal !important;
+}
+
+.statute-text>ol>li>ol {
+    list-style-type: lower-alpha !important;
+}
+
+.statute-text>ol>li>ol>li>ol {
+    list-style-type: lower-roman !important;
+}
+
+.statute-text li {
+    display: list-item;
+    margin-bottom: 0.2rem;
+}
+
+/* ---------- News ---------- */
+
+.news-section {
+    max-width: 1200px;
+    margin: 6rem auto 0;
+    padding: 0 2rem;
+}
+
+.news-section h2 {
+    text-align: center;
+
+    font-size: 2.2rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    margin-bottom: 3rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.news-card {
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
+
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+}
+
+.news-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover img {
+    transform: scale(1.03);
+}
+
+.news-card-content {
+    padding: 1rem 0;
+}
+
+.news-card-content h3 {
+    margin: 0 0 0.4rem;
+
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.news-card-content time {
+    font-size: 0.9rem;
+    opacity: 0.65;
+}
+
+@media (max-width: 900px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .news-section {
+        padding: 0 1rem;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
 }

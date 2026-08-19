@@ -54,7 +54,7 @@
         <div class="member">
 
             {{ if $portrait }}
-            
+
             <h3>{{ .name }}</h3>
             <a href="#" class="member-link" data-member="{{ .id }}" data-image="{{ $portrait.RelPermalink }}"
                 data-name="{{ .name }}" data-bio="{{ .bio }}" onclick="return false;">
@@ -62,8 +62,6 @@
                 <img src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}">
             </a>
 
-            moja interpretacja PND 
-            
             moja działalność
 
             {{ else }}
@@ -80,6 +78,45 @@
 
     </section>
 
+    <section class="news-section">
+
+        <h2>Działaność</h2>
+
+        <div class="news-grid">
+
+            {{ $news := where .Site.RegularPages "Section" "news" }}
+
+            {{ range sort $news "Date" "desc" }}
+
+            <a href="{{ .RelPermalink }}" class="news-card">
+
+                {{ with .Params.image }}
+                {{ $image := $.Resources.GetMatch . }}
+
+                {{ if $image }}
+                <img src="{{ $image.RelPermalink }}" alt="{{ $.Title }}">
+                {{ end }}
+                {{ end }}
+
+                <div class="news-card-content">
+
+                    <h3>{{ .Title }}</h3>
+
+                    {{ if .Date }}
+                    <time datetime="{{ .Date.Format " 2006-01-02" }}">
+                        {{ .Date.Format "02.01.2006" }}
+                    </time>
+                    {{ end }}
+
+                </div>
+
+            </a>
+
+            {{ end }}
+
+        </div>
+
+    </section>
 
     <!-- grid z newsami + kategorie jak na atelier.harmoza.pl -->
 

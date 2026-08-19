@@ -1,4 +1,4 @@
-baseURL = "https://pnd.org.pl/"
+baseURL = "https://paintingsnotdead.art/"
 locale = "pl-PL"
 title = "Painting's not dead"
 theme = "blowfish"
@@ -9,4 +9,5 @@ enableRobotsTXT = true
 customCSS = ["css/custom.css"]
 
 [params.article]
-showImageZoom = true
+showImageZoom = false
+showImageInArticle = false
