@@ -13,6 +13,8 @@
     </div>
 
 
+    <!-- zamiast bio - opis podejścia do idei PND -->
+
     <section class="team">
 
         {{ $people := slice
@@ -25,20 +27,20 @@
 
         (dict
         "id" "joanna"
-        "image" "osoba2.jpg"
+        "image" "joanna-da-costa.jpg"
         "name" "Joanna da Costa"
         "bio" "bio2")
 
         (dict
         "id" "person3"
-        "image" "osoba3.jpg"
+        "image" "jaroslaw-bauc.jpg"
         "name" "Jarosław Bauć"
         "bio" "bio3"
         )
 
         (dict
         "id" "person4"
-        "image" "osoba4.jpg"
+        "image" "olgierd-szopinski.jpg"
         "name" "Olgierd Szopiński"
         "bio" "bio4"
         )
@@ -52,14 +54,17 @@
         <div class="member">
 
             {{ if $portrait }}
-
+            
+            <h3>{{ .name }}</h3>
             <a href="#" class="member-link" data-member="{{ .id }}" data-image="{{ $portrait.RelPermalink }}"
                 data-name="{{ .name }}" data-bio="{{ .bio }}" onclick="return false;">
                 <!-- <a href="{{ $portrait.RelPermalink }}" class="lightbox" data-zoomable> -->
                 <img src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}">
-
             </a>
-            <h3>{{ .name }}</h3>
+
+            moja interpretacja PND 
+            
+            moja działalność
 
             {{ else }}
 
@@ -76,7 +81,10 @@
     </section>
 
 
-    <section class="activity">
+    <!-- grid z newsami + kategorie jak na atelier.harmoza.pl -->
+
+
+    <!-- <section class="activity"> -- do przeniesienia do góry jak statut na stronie fundacji
 
         <h2>PND ACTION - koncepcja artystyczna</h2>
 
@@ -109,7 +117,7 @@
             odwołują się do idei PND (o czym szerzej niebawem).
         </p>
 
-    </section>
+    </section> -->
 
 </div>
 
