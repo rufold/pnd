@@ -6,3 +6,4 @@ image: "pic3.jpg"
 ---
 
 treść posta
+![obrazek](pic3.jpg)

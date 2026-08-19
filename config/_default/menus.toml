@@ -11,6 +11,11 @@ weight = 5
 class = "statute-menu-link"
 
 [[main]]
+name = "fundacja"
+url = "https://pnd.org.pl"
+weight = 6
+
+[[main]]
 name = ""
 pre = "facebook"
 url = "..."

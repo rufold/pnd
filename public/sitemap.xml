@@ -3,23 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>http://localhost:11349/news/</loc>
+    <loc>http://localhost:5430/news/</loc>
     <lastmod>2026-08-19T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:11349/</loc>
+    <loc>http://localhost:5430/</loc>
     <lastmod>2026-08-19T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:11349/news/post1/</loc>
+    <loc>http://localhost:5430/news/post1/</loc>
     <lastmod>2026-08-19T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:11349/news/post2/</loc>
+    <loc>http://localhost:5430/news/post2/</loc>
     <lastmod>2026-08-14T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:11349/news/post3/</loc>
+    <loc>http://localhost:5430/news/post3/</loc>
     <lastmod>2026-08-10T00:00:00+00:00</lastmod>
   </url>
 </urlset>

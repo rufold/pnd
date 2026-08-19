@@ -360,3 +360,15 @@
         grid-template-columns: 1fr;
     }
 }
+
+.member-link {
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+}
+
+.member-link h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}

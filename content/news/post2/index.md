@@ -6,3 +6,4 @@ image: "pic2.jpeg"
 ---
 
 treść posta
+![obrazek](pic2.jpeg)

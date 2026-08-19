@@ -57,11 +57,12 @@
 
             {{ if $portrait }}
 
-            <h3>{{ .name }}</h3>
             <a href="#" class="member-link" data-member="{{ .id }}" data-image="{{ $portrait.RelPermalink }}"
-                data-name="{{ .name }}" data-bio="{{ .bio }}" onclick="return false;">
+                data-name="{{ .name }}" data-bio="{{ .bio }}">
+                <h3>{{ .name }}</h3>
                 <!-- <a href="{{ $portrait.RelPermalink }}" class="lightbox" data-zoomable> -->
-                <img src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}">
+                <img class="member-portrait" src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}"
+                    data-zoomable="false">
             </a>
 
             moja działalność
@@ -92,24 +93,15 @@
 
             <a href="{{ .RelPermalink }}" class="news-card">
 
-                {{ with .Params.image }}
-                {{ $image := $.Resources.GetMatch . }}
-
-                {{ if $image }}
-                <img src="{{ $image.RelPermalink }}" alt="{{ $.Title }}">
-                {{ end }}
+                {{ with .Resources.GetMatch "*.{jpg,jpeg,png,webp}" }}
+                <img src="{{ .RelPermalink }}" alt="{{ $.Title }}">
                 {{ end }}
 
                 <div class="news-card-content">
-
                     <h3>{{ .Title }}</h3>
-
-                    {{ if .Date }}
                     <time datetime="{{ .Date.Format " 2006-01-02" }}">
                         {{ .Date.Format "02.01.2006" }}
                     </time>
-                    {{ end }}
-
                 </div>
 
             </a>
@@ -120,14 +112,12 @@
 
     </section>
 
-    <!-- grid z newsami + kategorie jak na atelier.harmoza.pl -->
-
 </div>
 
 <div id="member-modal" class="member-modal">
     <div class="member-modal-content">
         <button id="modal-close">&times;</button>
-        <img id="modal-image">
+        <img id="modal-image" data-zoomable="false">
         <h2 id="modal-name"></h2>
         <p id="modal-bio"></p>
     </div>
@@ -153,7 +143,10 @@
         const manifestoMenuLink = document.querySelector(".manifesto-menu-link");
 
         document.querySelectorAll(".member-link").forEach(link => {
-            link.addEventListener("click", () => {
+            link.addEventListener("click", event => {
+                event.preventDefault();
+                event.stopPropagation();
+
                 modalImage.src = link.dataset.image;
                 modalImage.alt = link.dataset.name;
 
@@ -161,8 +154,20 @@
                 modalBio.textContent = link.dataset.bio;
 
                 modal.classList.add("open");
-            });
+            }, true);
         });
+
+        modalImage.addEventListener("click", event => {
+            event.preventDefault();
+            event.stopPropagation();
+        }, true);
+
+        document.querySelectorAll(".member-portrait").forEach(image => {
+            image.addEventListener("click", event => {
+                event.preventDefault();
+                event.stopPropagation();
+            })
+        })
 
         closeButton.addEventListener("click", () => {
             modal.classList.remove("open");
@@ -180,20 +185,17 @@
             }
         });
 
-                /* Open statute */
         function openManifesto(event) {
             event.preventDefault();
             manifestoModal.classList.add("open");
         }
 
 
-        /* Close statute */
         function closeManifesto() {
             manifestoModal.classList.remove("open");
         }
 
 
-        /* Page link */
         if (manifestoOpen) {
             manifestoOpen.addEventListener("click", openManifesto);
         }
@@ -207,14 +209,10 @@
             }
         });
 
-
-        /* X button */
         if (manifestoClose) {
             manifestoClose.addEventListener("click", closeManifesto);
         }
 
-
-        /* Click outside modal */
         manifestoModal.addEventListener("click", (event) => {
             if (event.target === manifestoModal) {
                 closeManifesto();
@@ -222,7 +220,6 @@
         });
 
 
-        /* Escape */
         document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
                 closeManifesto();
