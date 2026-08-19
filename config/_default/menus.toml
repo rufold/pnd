@@ -1,0 +1,23 @@
+[[main]]
+name = "aktualności"
+pageRef = "news"
+weight = 1
+
+[[main]]
+name = "manifest"
+url = "#manifesto"
+weight = 5
+[main.params]
+class = "statute-menu-link"
+
+[[main]]
+name = ""
+pre = "facebook"
+url = "..."
+weight = 10
+
+[[main]]
+name = " "
+pre = "instagram"
+url = "..."
+weight = 11

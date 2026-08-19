@@ -1,4 +1,6 @@
 {{ define "main" }}
+{{ $customCSS := resources.Get "css/custom.css" }}
+<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
 
 <div class="team-page">
 
@@ -80,7 +82,7 @@
 
     <section class="news-section">
 
-        <h2>Działaność</h2>
+        <h2>Działalność</h2>
 
         <div class="news-grid">
 
@@ -120,42 +122,6 @@
 
     <!-- grid z newsami + kategorie jak na atelier.harmoza.pl -->
 
-
-    <!-- <section class="activity"> -- do przeniesienia do góry jak statut na stronie fundacji
-
-        <h2>PND ACTION - koncepcja artystyczna</h2>
-
-        <p>
-            Odbywamy podróż artystyczną, której celem jest stworzenie nowej przestrzeni związanej ze sztuką, a
-            konkretnie z malarstwem, jego aktualnym dorobkiem i znaczeniem dla współczesnej kultury.
-
-            <br>
-            <br>
-
-            Zaznaczamy swoją obecność poprzez interwencje artystyczne w przestrzeniach publicznych, które finalizujemy
-            ustanowieniem placu, ulicy bądź punktu o nazwie przywołującej nasz koncept.
-
-            <br>
-            <br>
-
-            Miejsca te, tworzone według estetyki poszczególnych miast zaznaczamy na mapie Europy jako punkty Nowej
-            Przestrzeni dla sztuki, która jest dla nas bezcenna.
-
-            <br>
-            <br>
-
-            Zapraszamy do śledzenia naszej akcji i związanych z nią interwencji artystycznych, a także do śledzenia
-            działań naszej grupy.
-
-            <br>
-
-            <br>
-            Akcja jest zwiastunem wielu działań w zakresie sztuki grupy artystów, którzy poprzez swoją twórczość
-            odwołują się do idei PND (o czym szerzej niebawem).
-        </p>
-
-    </section> -->
-
 </div>
 
 <div id="member-modal" class="member-modal">
@@ -167,6 +133,13 @@
     </div>
 </div>
 
+<div id="manifesto-modal" class="member-modal">
+    <div class="manifesto-content">
+        <button id="manifesto-close">&times;</button>
+        {{ partial "manifest.html" . }}
+    </div>
+</div>
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const modal = document.getElementById("member-modal");
@@ -174,6 +147,10 @@
         const modalName = document.getElementById("modal-name");
         const modalBio = document.getElementById("modal-bio");
         const closeButton = document.getElementById("modal-close");
+        const manifestoModal = document.getElementById("manifesto-modal");
+        const manifestoOpen = document.getElementById("open-manifesto");
+        const manifestoClose = document.getElementById("manifesto-close");
+        const manifestoMenuLink = document.querySelector(".manifesto-menu-link");
 
         document.querySelectorAll(".member-link").forEach(link => {
             link.addEventListener("click", () => {
@@ -200,6 +177,55 @@
         document.addEventListener("keydown", (event) => {
             if (event.key == "Escape") {
                 modal.classList.remove("open");
+            }
+        });
+
+                /* Open statute */
+        function openManifesto(event) {
+            event.preventDefault();
+            manifestoModal.classList.add("open");
+        }
+
+
+        /* Close statute */
+        function closeManifesto() {
+            manifestoModal.classList.remove("open");
+        }
+
+
+        /* Page link */
+        if (manifestoOpen) {
+            manifestoOpen.addEventListener("click", openManifesto);
+        }
+
+
+        document.addEventListener("click", (event) => {
+            const menuLink = event.target.closest('a[href="#manifesto"]');
+
+            if (menuLink) {
+                openManifesto(event);
+            }
+        });
+
+
+        /* X button */
+        if (manifestoClose) {
+            manifestoClose.addEventListener("click", closeManifesto);
+        }
+
+
+        /* Click outside modal */
+        manifestoModal.addEventListener("click", (event) => {
+            if (event.target === manifestoModal) {
+                closeManifesto();
+            }
+        });
+
+
+        /* Escape */
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                closeManifesto();
             }
         });
     });
