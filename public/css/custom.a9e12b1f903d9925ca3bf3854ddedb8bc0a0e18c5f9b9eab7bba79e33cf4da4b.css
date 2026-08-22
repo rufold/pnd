@@ -13,7 +13,7 @@
 
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.5rem 2rem 6rem;
+    padding: 1rem 2rem 6rem;
 
     color: var(--ink);
 }
@@ -393,7 +393,7 @@ html {
 
 @media (max-width: 550px) {
     .team-page {
-        padding: 1rem 1rem 4rem;
+        padding: 2rem 1rem 4rem;
     }
 
     .team {

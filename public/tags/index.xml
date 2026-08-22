@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Painting&#39;s not dead</title>
-    <link>https://paintingsnotdead.art/tags/</link>
+    <link>http://localhost:1313/tags/</link>
     <description>Recent content in Tags on Painting&#39;s not dead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl-PL</language>
     <copyright>© 2026 </copyright>
-    <atom:link href="https://paintingsnotdead.art/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     
   </channel>
 </rss>

@@ -1,0 +1,13 @@
+customCSS = ["css/custom.css"]
+colorScheme = "pnd"
+
+[article]
+showImageZoom = false
+showImageInArticle = false
+showTaxonomies = true
+
+[term]
+cardView = true
+
+[header]
+layout = "fixed-gradient"
