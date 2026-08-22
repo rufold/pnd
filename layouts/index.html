@@ -21,56 +21,35 @@
 
     <section class="team">
 
-        {{ $people := slice
-        (dict
-        "id" "mikolaj"
-        "image" "mikolaj-harmoza.jpg"
-        "name" "Mikołaj Harmoza"
-        "bio" "artysta malarz, wykładowca ASP w Gdańsku"
-        )
-
-        (dict
-        "id" "joanna"
-        "image" "joanna-da-costa.jpg"
-        "name" "Joanna da Costa"
-        "bio" "bio2")
-
-        (dict
-        "id" "jaroslaw"
-        "image" "jaroslaw-bauc.jpg"
-        "name" "Jarosław Bauć"
-        "bio" "bio3"
-        )
-
-        (dict
-        "id" "olgierd"
-        "image" "olgierd-szopinski.jpg"
-        "name" "Olgierd Szopiński"
-        "bio" "bio4"
-        )
-        }}
-
+        {{ $people := where .Site.Pages "Section" "persons" }}
+        {{ $people = where $people "Kind" "term" }}
+        {{ $people = sort $people "Params.weight" }}
 
         {{ range $people }}
 
-        {{ $portrait := resources.Get (printf "images/%s" .image) }}
+        {{ $portrait := resources.Get (printf "images/%s" .Params.image) }}
 
         <div class="member">
 
             {{ if $portrait }}
 
-            <a href="#" class="member-link" data-member="{{ .id }}" data-image="{{ $portrait.RelPermalink }}"
-                data-name="{{ .name }}" data-bio="{{ .bio }}">
-                <h3>{{ .name }}</h3>
-                <img class="member-portrait" src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}">
+            {{ $website := .Params.website }}
+            {{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
+            {{ $website = printf "https://%s" $website }}
+            {{ end }}
+
+            <a href="#" class="member-link" data-member="{{ .File.ContentBaseName }}" data-image="{{ $portrait.RelPermalink }}"
+                data-name="{{ .Title }}" data-bio="{{ .Params.bio }}" data-website="{{ $website }}">
+                <h3>{{ .Title }}</h3>
+                <img class="member-portrait" src="{{ ($portrait.Fill (printf "400x533 %s" (.Params.anchor | default "Smart"))).RelPermalink }}" alt="{{ .Title }}">
             </a>
 
-            <a href="{{ printf "/persons/%s/" .id | relURL }}" class="member-activity-link">moja działalność</a>
+            <a href="{{ .RelPermalink }}" class="member-activity-link">moja działalność</a>
 
             {{ else }}
 
             <p>
-                Missing image: {{ .image }}
+                Missing image: {{ .Params.image }}
             </p>
 
             {{ end }}
@@ -130,8 +109,11 @@
     <div class="member-modal-content">
         <button id="modal-close">&times;</button>
         <img id="modal-image" data-zoomable="false">
-        <h2 id="modal-name"></h2>
-        <p id="modal-bio"></p>
+        <div class="modal-info">
+            <h2 id="modal-name"></h2>
+            <p id="modal-bio"></p>
+            <a id="modal-website" href="#" target="_blank" rel="noopener">strona internetowa</a>
+        </div>
     </div>
 </div>
 

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Joanna da Costa on Painting&#39;s not dead</title>
-    <link>http://localhost:1313/persons/joanna/</link>
+    <link>https://paintingsnotdead.art/persons/joanna/</link>
     <description>Recent content in Joanna da Costa on Painting&#39;s not dead</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>pl-PL</language>
     <copyright>© 2026 </copyright>
-    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/persons/joanna/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 Aug 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://paintingsnotdead.art/persons/joanna/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>post 2</title>
-      <link>http://localhost:1313/news/post2/</link>
+      <link>https://paintingsnotdead.art/news/post2/</link>
       <pubDate>Fri, 14 Aug 2026 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/news/post2/</guid>
-      <description>&lt;p&gt;treść posta&#xA;&lt;figure&gt;&lt;img&#xD;&#xA;    class=&#34;my-0 rounded-md&#34;&#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    decoding=&#34;async&#34;&#xD;&#xA;    fetchpriority=&#34;auto&#34;&#xD;&#xA;    alt=&#34;obrazek&#34;&#xD;&#xA;    width=&#34;1080&#34;&#xD;&#xA;    height=&#34;600&#34;&#xD;&#xA;    src=&#34;http://localhost:1313/news/post2/pic2_hu_e8cd45e95389cf62.jpeg&#34;&#xD;&#xA;    srcset=&#34;http://localhost:1313/news/post2/pic2_hu_e8cd45e95389cf62.jpeg 800w, http://localhost:1313/news/post2/pic2.jpeg 1280w&#34;&#xD;&#xA;    sizes=&#34;(min-width: 768px) 50vw, 65vw&#34;&#xD;&#xA;    data-zoom-src=&#34;http://localhost:1313/news/post2/pic2.jpeg&#34;&gt;&lt;/figure&gt;&#xD;&#xA;&lt;/p&gt;</description>
+      <guid>https://paintingsnotdead.art/news/post2/</guid>
+      <description>&lt;p&gt;treść posta&#xA;&lt;figure&gt;&lt;img&#xD;&#xA;    class=&#34;my-0 rounded-md&#34;&#xD;&#xA;    loading=&#34;lazy&#34;&#xD;&#xA;    decoding=&#34;async&#34;&#xD;&#xA;    fetchpriority=&#34;auto&#34;&#xD;&#xA;    alt=&#34;obrazek&#34;&#xD;&#xA;    width=&#34;1080&#34;&#xD;&#xA;    height=&#34;600&#34;&#xD;&#xA;    src=&#34;https://paintingsnotdead.art/news/post2/pic2_hu_e8cd45e95389cf62.jpeg&#34;&#xD;&#xA;    srcset=&#34;https://paintingsnotdead.art/news/post2/pic2_hu_e8cd45e95389cf62.jpeg 800w, https://paintingsnotdead.art/news/post2/pic2.jpeg 1280w&#34;&#xD;&#xA;    sizes=&#34;(min-width: 768px) 50vw, 65vw&#34;&#xD;&#xA;    data-zoom-src=&#34;https://paintingsnotdead.art/news/post2/pic2.jpeg&#34;&gt;&lt;/figure&gt;&#xD;&#xA;&lt;/p&gt;</description>
       
     </item>
     

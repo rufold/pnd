@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalImage = document.getElementById("modal-image");
     const modalName = document.getElementById("modal-name");
     const modalBio = document.getElementById("modal-bio");
+    const modalWebsite = document.getElementById("modal-website");
     const closeButton = document.getElementById("modal-close");
     const manifestoModal = document.getElementById("manifesto-modal");
     const manifestoOpen = document.getElementById("open-manifesto");
@@ -19,6 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             modalName.textContent = link.dataset.name;
             modalBio.textContent = link.dataset.bio;
+
+            if (link.dataset.website) {
+                modalWebsite.href = link.dataset.website;
+                modalWebsite.style.display = "";
+            } else {
+                modalWebsite.removeAttribute("href");
+                modalWebsite.style.display = "none";
+            }
 
             modal.classList.add("open");
         }, true);

@@ -12,8 +12,12 @@ person = "persons"
 
 [params]
 customCSS = ["css/custom.css"]
+colorScheme = "pnd"
 
 [params.article]
 showImageZoom = false
 showImageInArticle = false
 showTaxonomies = true
+
+[params.term]
+cardView = true

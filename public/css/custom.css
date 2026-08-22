@@ -1,9 +1,29 @@
-/* ---------- Layout ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;1,9..144,440&display=swap');
+
+/* ---------- Tokens ----------
+   Reuses the site's own color-scheme variables (assets/css/schemes/pnd.css)
+   so this page always matches the header/footer, in both light and dark mode. */
 
 .team-page {
+    --ink: rgb(var(--color-neutral-900));
+    --muted: rgb(var(--color-neutral-500));
+    --rule: rgb(var(--color-neutral-300));
+    --frame: rgb(var(--color-neutral-100));
+    --accent: rgb(var(--color-primary-600));
+
     max-width: 1200px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 6rem;
+
+    color: var(--ink);
+}
+
+html.dark .team-page {
+    --ink: rgb(var(--color-neutral));
+    --muted: rgb(var(--color-neutral-400));
+    --rule: rgb(var(--color-neutral-700));
+    --frame: rgb(var(--color-neutral-700));
+    --accent: rgb(var(--color-primary-400));
 }
 
 html {
@@ -17,12 +37,29 @@ html {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 .team-logo img {
-    width: min(320px, 75vw);
+    width: min(280px, 70vw);
     height: auto;
+}
+
+
+/* ---------- Section labels ---------- */
+
+.news-section h2,
+.supporters-section h2 {
+    text-align: center;
+
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 440;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    margin-bottom: 3rem;
 }
 
 
@@ -31,7 +68,7 @@ html {
 .team {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 3rem;
+    gap: 3rem 2.5rem;
     margin-bottom: 1rem;
 }
 
@@ -44,13 +81,14 @@ html {
     aspect-ratio: 3 / 4;
     object-fit: cover;
     display: block;
+    filter: grayscale(0.15) contrast(1.03);
 
-    transition: transform 0.5s ease, filter 0.5s ease;
+    transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 .member:hover img {
-    transform: scale(1.03);
-    filter: brightness(0.92);
+    transform: scale(1.02);
+    filter: grayscale(0) contrast(1.05);
 }
 
 .member-link {
@@ -60,13 +98,37 @@ html {
     color: inherit;
 }
 
+.member-link h3,
+.member-activity-link {
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
 .member-link h3 {
     margin-top: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
-    font-size: 1.25rem;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--ink);
+}
+
+.member-activity-link {
+    display: block;
+    margin-top: 1rem;
+
     font-weight: 400;
-    letter-spacing: 0.03em;
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+
+    transition: color 0.3s ease;
+}
+
+.member-activity-link:hover {
+    color: var(--accent);
 }
 
 
@@ -78,7 +140,7 @@ html {
     display: none;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, .8);
+    background: rgba(10, 8, 6, .88);
     backdrop-filter: blur(8px);
     z-index: 9999;
     padding: 2rem;
@@ -93,10 +155,11 @@ html {
     width: 100%;
     display: grid;
     grid-template-columns: 350px 1fr;
+    align-items: start;
     gap: 2rem;
     padding: 2rem;
     position: relative;
-    border-radius: 6px;
+    color: rgb(var(--color-neutral-50));
 }
 
 #modal-image {
@@ -104,13 +167,28 @@ html {
     display: block;
 }
 
+.modal-info {
+    display: block;
+}
+
 #modal-name {
     margin-top: 0;
+
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
     font-size: 2rem;
+    letter-spacing: 0.02em;
 }
 
 #modal-bio {
+    margin-top: 0;
     line-height: 1.8;
+}
+
+#modal-website {
+    display: inline-block;
+    margin-top: 1rem;
 }
 
 #modal-close {
@@ -119,6 +197,7 @@ html {
     top: 20px;
     background: none;
     border: none;
+    color: inherit;
     font-size: 2rem;
     cursor: pointer;
 }
@@ -135,13 +214,18 @@ html {
     color: white !important;
     padding: 2rem;
     position: relative;
-    border-radius: 6px;
 }
 
 .manifesto-content h2 {
     text-align: center;
     margin-top: 0;
     margin-bottom: 2rem;
+
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .manifesto-content h2,
@@ -162,6 +246,10 @@ html {
 .manifesto-text h3 {
     text-align: center;
     margin: 2rem 0 1rem;
+
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-weight: 440;
 }
 
 .manifesto-text ol {
@@ -205,20 +293,8 @@ html {
 .news-section,
 .supporters-section {
     max-width: 1200px;
-    margin: 6rem auto 0;
+    margin: 7rem auto 0;
     padding: 0 2rem;
-}
-
-.news-section h2,
-.supporters-section h2 {
-    text-align: center;
-
-    font-size: 2.2rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-
-    margin-bottom: 3rem;
 }
 
 #news {
@@ -228,13 +304,14 @@ html {
 .news-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 3rem 2.5rem;
 }
 
 .news-card {
     display: block;
     text-decoration: none;
     overflow: hidden;
+    color: inherit;
 
     transition: transform 0.3s ease;
 }
@@ -246,45 +323,53 @@ html {
 .news-card img {
     width: 100%;
     aspect-ratio: 4 / 3;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+    background: var(--frame);
 
     transition: transform 0.5s ease;
 }
 
 .news-card:hover img {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
 .news-card-content {
-    padding: 1rem 0;
+    padding: 1.2rem 0 0;
+    border-top: 1px solid var(--rule);
 }
 
 .news-card-content h3 {
     margin: 0 0 0.4rem;
 
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-family: 'Fraunces', Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-size: 1.2rem;
 }
 
 .news-card-content time {
-    font-size: 0.9rem;
-    opacity: 0.65;
+    font-family: Georgia, 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
 }
 
 .news-card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-top: 0.6rem;
+    margin-top: 0.8rem;
 }
 
 .person-badge {
-    font-size: 0.75rem;
-    padding: 0.15rem 0.6rem;
-    border: 1px solid currentColor;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
     border-radius: 999px;
-    opacity: 0.7;
 }
 
 
@@ -303,7 +388,7 @@ html {
 
 @media (max-width: 550px) {
     .team-page {
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 4rem;
     }
 
     .team {
@@ -317,5 +402,10 @@ html {
 
     .news-grid {
         grid-template-columns: 1fr;
+    }
+
+    .news-section h2,
+    .supporters-section h2 {
+        font-size: 1.2rem;
     }
 }
