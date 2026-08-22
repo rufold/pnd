@@ -1,8 +1,8 @@
 {{ define "main" }}
-{{ $customCSS := resources.Get "css/custom.css" }}
-{{ $js := resources.Get "js/index.js" }}
-<script src="{{ $js.RelPermalink}}" defer></script>
-<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
+{{ $customCSS := resources.Get "css/custom.css" | fingerprint }}
+{{ $js := resources.Get "js/index.js" | fingerprint }}
+<script src="{{ $js.RelPermalink}}" integrity="{{ $js.Data.Integrity }}" defer></script>
+<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
 
 <div class="team-page">
 
