@@ -5,9 +5,15 @@ theme = "blowfish"
 
 enableRobotsTXT = true
 
+[taxonomies]
+tag = "tags"
+category = "categories"
+person = "persons"
+
 [params]
 customCSS = ["css/custom.css"]
 
 [params.article]
 showImageZoom = false
 showImageInArticle = false
+showTaxonomies = true

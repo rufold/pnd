@@ -1,5 +1,7 @@
 {{ define "main" }}
 {{ $customCSS := resources.Get "css/custom.css" }}
+{{ $js := resources.Get "js/index.js" }}
+<script src="{{ $js.RelPermalink}}" defer></script>
 <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
 
 <div class="team-page">
@@ -34,14 +36,14 @@
         "bio" "bio2")
 
         (dict
-        "id" "person3"
+        "id" "jaroslaw"
         "image" "jaroslaw-bauc.jpg"
         "name" "Jarosław Bauć"
         "bio" "bio3"
         )
 
         (dict
-        "id" "person4"
+        "id" "olgierd"
         "image" "olgierd-szopinski.jpg"
         "name" "Olgierd Szopiński"
         "bio" "bio4"
@@ -60,12 +62,10 @@
             <a href="#" class="member-link" data-member="{{ .id }}" data-image="{{ $portrait.RelPermalink }}"
                 data-name="{{ .name }}" data-bio="{{ .bio }}">
                 <h3>{{ .name }}</h3>
-                <!-- <a href="{{ $portrait.RelPermalink }}" class="lightbox" data-zoomable> -->
-                <img class="member-portrait" src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}"
-                    data-zoomable="false">
+                <img class="member-portrait" src="{{ ($portrait.Fill " 400x533").RelPermalink }}" alt="{{ .name }}">
             </a>
 
-            moja działalność
+            <a href="{{ printf "/persons/%s/" .id | relURL }}" class="member-activity-link">moja działalność</a>
 
             {{ else }}
 
@@ -81,7 +81,7 @@
 
     </section>
 
-    <section class="news-section">
+    <section id="news" class="news-section">
 
         <h2>Działalność</h2>
 
@@ -102,6 +102,14 @@
                     <time datetime="{{ .Date.Format " 2006-01-02" }}">
                         {{ .Date.Format "02.01.2006" }}
                     </time>
+
+                    {{ with .GetTerms "persons" }}
+                    <div class="news-card-tags">
+                        {{ range . }}
+                        <span class="person-badge">{{ .LinkTitle }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
                 </div>
 
             </a>
@@ -110,6 +118,10 @@
 
         </div>
 
+    </section>
+
+    <section id="supporters" class="supporters-section">
+        <h2>Sympatycy</h2>
     </section>
 
 </div>
@@ -131,101 +143,7 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const modal = document.getElementById("member-modal");
-        const modalImage = document.getElementById("modal-image");
-        const modalName = document.getElementById("modal-name");
-        const modalBio = document.getElementById("modal-bio");
-        const closeButton = document.getElementById("modal-close");
-        const manifestoModal = document.getElementById("manifesto-modal");
-        const manifestoOpen = document.getElementById("open-manifesto");
-        const manifestoClose = document.getElementById("manifesto-close");
-        const manifestoMenuLink = document.querySelector(".manifesto-menu-link");
 
-        document.querySelectorAll(".member-link").forEach(link => {
-            link.addEventListener("click", event => {
-                event.preventDefault();
-                event.stopPropagation();
-
-                modalImage.src = link.dataset.image;
-                modalImage.alt = link.dataset.name;
-
-                modalName.textContent = link.dataset.name;
-                modalBio.textContent = link.dataset.bio;
-
-                modal.classList.add("open");
-            }, true);
-        });
-
-        modalImage.addEventListener("click", event => {
-            event.preventDefault();
-            event.stopPropagation();
-        }, true);
-
-        document.querySelectorAll(".member-portrait").forEach(image => {
-            image.addEventListener("click", event => {
-                event.preventDefault();
-                event.stopPropagation();
-            })
-        })
-
-        closeButton.addEventListener("click", () => {
-            modal.classList.remove("open");
-        });
-
-        modal.addEventListener("click", (event) => {
-            if (event.target == modal) {
-                modal.classList.remove("open");
-            }
-        });
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key == "Escape") {
-                modal.classList.remove("open");
-            }
-        });
-
-        function openManifesto(event) {
-            event.preventDefault();
-            manifestoModal.classList.add("open");
-        }
-
-
-        function closeManifesto() {
-            manifestoModal.classList.remove("open");
-        }
-
-
-        if (manifestoOpen) {
-            manifestoOpen.addEventListener("click", openManifesto);
-        }
-
-
-        document.addEventListener("click", (event) => {
-            const menuLink = event.target.closest('a[href="#manifesto"]');
-
-            if (menuLink) {
-                openManifesto(event);
-            }
-        });
-
-        if (manifestoClose) {
-            manifestoClose.addEventListener("click", closeManifesto);
-        }
-
-        manifestoModal.addEventListener("click", (event) => {
-            if (event.target === manifestoModal) {
-                closeManifesto();
-            }
-        });
-
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                closeManifesto();
-            }
-        });
-    });
 </script>
 
 {{ end }}
