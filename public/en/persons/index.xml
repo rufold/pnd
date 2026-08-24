@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Persons on Painting&#39;s not dead</title>
+    <link>http://localhost:1313/en/persons/</link>
+    <description>Recent content in Persons on Painting&#39;s not dead</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-UK</language>
+    <copyright>© 2026 </copyright>
+    <atom:link href="http://localhost:1313/en/persons/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Jarosław Bauć</title>
+      <link>http://localhost:1313/en/persons/jaroslaw/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/en/persons/jaroslaw/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Joanna da Costa</title>
+      <link>http://localhost:1313/en/persons/joanna/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/en/persons/joanna/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Mikołaj Harmoza</title>
+      <link>http://localhost:1313/en/persons/mikolaj/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/en/persons/mikolaj/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Olgierd Szopiński</title>
+      <link>http://localhost:1313/en/persons/olgierd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/en/persons/olgierd/</guid>
+      <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Supporters</title>
+      <link>http://localhost:1313/en/persons/supporters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/en/persons/supporters/</guid>
+      <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>

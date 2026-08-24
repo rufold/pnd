@@ -1,0 +1,4 @@
+---
+title: "Sympatycy"
+type: "supporters"
+---

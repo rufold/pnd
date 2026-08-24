@@ -5,4 +5,5 @@ image: "jaroslaw-bauc.jpg"
 bio: "bio3"
 anchor: "Center"
 website: ""
+instagram: "jaroslaw.bauc"
 ---

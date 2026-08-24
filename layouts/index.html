@@ -16,40 +16,50 @@
         {{ end }}
     </div>
 
-
     <!-- zamiast bio - opis podejścia do idei PND -->
 
     <section class="team">
 
-        {{ $people := where .Site.Pages "Section" "persons" }}
-        {{ $people = where $people "Kind" "term" }}
-        {{ $people = sort $people "Params.weight" }}
+        {{ $peopleRaw := where .Site.Pages "Section" "persons" }}
+        {{ $peopleRaw = where $peopleRaw "Kind" "term" }}
+        {{ $peopleRaw = where $peopleRaw "Parent.Kind" "taxonomy" }}
+        {{ $peopleRaw = where $peopleRaw "File.ContentBaseName" "!=" "supporters" }}
+
+        {{ $people := slice }}
+        {{ range $peopleRaw }}
+        {{ $weight := partial "person-param.html" (dict "page" . "key" "weight") }}
+        {{ $people = $people | append (dict "page" . "weight" $weight) }}
+        {{ end }}
+        {{ $people = sort $people "weight" }}
 
         {{ range $people }}
+        {{ $person := .page }}
 
-        {{ $portrait := resources.Get (printf "images/%s" .Params.image) }}
+        {{ $image := partial "person-param.html" (dict "page" $person "key" "image") }}
+        {{ $anchor := partial "person-param.html" (dict "page" $person "key" "anchor") }}
+        {{ $portrait := resources.Get (printf "images/%s" $image) }}
 
         <div class="member">
 
             {{ if $portrait }}
 
-            {{ $website := .Params.website }}
+            {{ $website := partial "person-param.html" (dict "page" $person "key" "website") }}
             {{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
             {{ $website = printf "https://%s" $website }}
             {{ end }}
 
-            <a href="#" class="member-link" data-member="{{ .File.ContentBaseName }}" data-image="{{ $portrait.RelPermalink }}"
-                data-name="{{ .Title }}" data-bio="{{ .Params.bio }}" data-website="{{ $website }}">
-                <h3>{{ .Title }}</h3>
-                <img class="member-portrait" src="{{ ($portrait.Fill (printf "400x533 %s" (.Params.anchor | default "Smart"))).RelPermalink }}" alt="{{ .Title }}">
+            <a href="#" class="member-link" data-member="{{ $person.File.ContentBaseName }}" data-image="{{ $portrait.RelPermalink }}"
+                data-name="{{ $person.Title }}" data-bio="{{ $person.Params.bio }}" data-website="{{ $website }}">
+                <h3>{{ $person.Title }}</h3>
+                <img class="member-portrait" src="{{ ($portrait.Fill (printf "400x533 %s" ($anchor | default "Smart"))).RelPermalink }}" alt="{{ $person.Title }}">
             </a>
 
-            <a href="{{ .RelPermalink }}" class="member-activity-link">moja działalność</a>
+            <a href="{{ $person.RelPermalink }}" class="member-activity-link">{{ i18n "member.activityLink" }}</a>
 
             {{ else }}
 
             <p>
-                Missing image: {{ .Params.image }}
+                Missing image: {{ $image }}
             </p>
 
             {{ end }}
@@ -62,7 +72,7 @@
 
     <section id="news" class="news-section">
 
-        <h2>Działalność</h2>
+        <h2>{{ i18n "news.heading" }}</h2>
 
         <div class="news-grid">
 
@@ -99,10 +109,6 @@
 
     </section>
 
-    <section id="supporters" class="supporters-section">
-        <h2>Sympatycy</h2>
-    </section>
-
 </div>
 
 <div id="member-modal" class="member-modal">
@@ -112,7 +118,7 @@
         <div class="modal-info">
             <h2 id="modal-name"></h2>
             <p id="modal-bio"></p>
-            <a id="modal-website" href="#" target="_blank" rel="noopener">strona internetowa</a>
+            <a id="modal-website" href="#" target="_blank" rel="noopener">{{ i18n "member.websiteLink" }}</a>
         </div>
     </div>
 </div>

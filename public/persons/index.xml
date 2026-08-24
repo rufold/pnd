@@ -49,5 +49,15 @@
       
     </item>
     
+    <item>
+      <title>Sympatycy</title>
+      <link>http://localhost:1313/persons/supporters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/persons/supporters/</guid>
+      <description></description>
+      
+    </item>
+    
   </channel>
 </rss>

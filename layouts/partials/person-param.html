@@ -1,0 +1,13 @@
+{{/* Reads .key from .page's params; if unset, falls back to the same key on its
+     default-language translation. Lets a translated person/supporter page
+     (e.g. _index.en.md) skip fields that never change per language, such as
+     image, weight, anchor, website or instagram — it only needs to set title/bio. */}}
+{{ $page := .page }}
+{{ $key := .key }}
+{{ $val := index $page.Params $key }}
+{{ if not $val }}
+{{ with $page.Translations }}
+{{ $val = index (index . 0).Params $key }}
+{{ end }}
+{{ end }}
+{{ return $val }}

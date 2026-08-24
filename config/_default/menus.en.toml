@@ -1,0 +1,33 @@
+[[main]]
+name = "news"
+url = "/en/#news"
+weight = 1
+
+[[main]]
+name = "supporters"
+url = "/en/persons/supporters/"
+weight = 3
+
+[[main]]
+name = "manifesto"
+url = "/en/#manifesto"
+weight = 4
+[main.params]
+class = "statute-menu-link"
+
+[[main]]
+name = "foundation"
+url = "https://pnd.org.pl"
+weight = 6
+
+[[main]]
+name = ""
+pre = "facebook"
+url = "..."
+weight = 10
+
+[[main]]
+name = " "
+pre = "instagram"
+url = "..."
+weight = 11

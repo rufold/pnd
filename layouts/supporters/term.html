@@ -1,0 +1,65 @@
+{{ define "main" }}
+{{ $customCSS := resources.Get "css/custom.css" | fingerprint }}
+<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
+
+<div class="team-page supporters-page">
+
+    <h1 class="supporters-title">{{ .Title }}</h1>
+
+    <div class="supporters-directory">
+
+        {{ $supportersRaw := where .Site.Pages "Section" "persons" }}
+        {{ $supportersRaw = where $supportersRaw "Kind" "term" }}
+        {{ $supportersRaw = where $supportersRaw "Parent.Title" .Title }}
+
+        {{ $supporters := slice }}
+        {{ range $supportersRaw }}
+        {{ $weight := partial "person-param.html" (dict "page" . "key" "weight") }}
+        {{ $supporters = $supporters | append (dict "page" . "weight" $weight) }}
+        {{ end }}
+        {{ $supporters = sort $supporters "weight" }}
+
+        {{ range $supporters }}
+        {{ $supporter := .page }}
+
+        {{ $image := partial "person-param.html" (dict "page" $supporter "key" "image") }}
+        {{ $anchor := partial "person-param.html" (dict "page" $supporter "key" "anchor") }}
+        {{ $portrait := "" }}
+        {{ if $image }}{{ $portrait = resources.Get (printf "images/%s" $image) }}{{ end }}
+
+        <div class="supporter">
+
+            {{ if $portrait }}
+            <img class="supporter-photo" src="{{ ($portrait.Fill (printf "240x240 %s" ($anchor | default "Smart"))).RelPermalink }}" alt="{{ $supporter.Title }}">
+            {{ end }}
+
+            <div class="supporter-info">
+                <h3>{{ $supporter.Title }}</h3>
+
+                {{ with $supporter.Params.bio }}
+                <p>{{ . }}</p>
+                {{ end }}
+
+                {{ $website := partial "person-param.html" (dict "page" $supporter "key" "website") }}
+                {{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
+                {{ $website = printf "https://%s" $website }}
+                {{ end }}
+
+                {{ $instagram := partial "person-param.html" (dict "page" $supporter "key" "instagram") }}
+
+                {{ if or $website $instagram }}
+                <div class="supporter-links">
+                    {{ with $website }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "member.websiteLink" }}</a>{{ end }}
+                    {{ with $instagram }}<a href="https://instagram.com/{{ . }}" target="_blank" rel="noopener">{{ i18n "member.instagramLink" }}</a>{{ end }}
+                </div>
+                {{ end }}
+            </div>
+
+        </div>
+
+        {{ end }}
+
+    </div>
+
+</div>
+{{ end }}

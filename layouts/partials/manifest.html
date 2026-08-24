@@ -1,34 +1,6 @@
-<!-- <section class="manifesto"> -->
-
-    <h2>PND ACTION - koncepcja artystyczna</h2>
-
-    <p>
-        Odbywamy podróż artystyczną, której celem jest stworzenie nowej przestrzeni związanej ze sztuką, a
-        konkretnie z malarstwem, jego aktualnym dorobkiem i znaczeniem dla współczesnej kultury.
-
-        <br>
-        <br>
-
-        Zaznaczamy swoją obecność poprzez interwencje artystyczne w przestrzeniach publicznych, które finalizujemy
-        ustanowieniem placu, ulicy bądź punktu o nazwie przywołującej nasz koncept.
-
-        <br>
-        <br>
-
-        Miejsca te, tworzone według estetyki poszczególnych miast zaznaczamy na mapie Europy jako punkty Nowej
-        Przestrzeni dla sztuki, która jest dla nas bezcenna.
-
-        <br>
-        <br>
-
-        Zapraszamy do śledzenia naszej akcji i związanych z nią interwencji artystycznych, a także do śledzenia
-        działań naszej grupy.
-
-        <br>
-
-        <br>
-        Akcja jest zwiastunem wielu działań w zakresie sztuki grupy artystów, którzy poprzez swoją twórczość
-        odwołują się do idei PND (o czym szerzej niebawem).
-    </p>
-
-<!-- </section> -->
+{{ with site.GetPage "/manifesto" }}
+<h2>{{ .Title }}</h2>
+<div class="manifesto-text">
+    {{ .Content }}
+</div>
+{{ end }}

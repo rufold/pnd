@@ -1,7 +1,8 @@
 baseURL = "https://paintingsnotdead.art/"
-locale = "pl-PL"
-title = "Painting's not dead"
 theme = "blowfish"
+
+defaultContentLanguage = "pl"
+defaultContentLanguageInSubdir = false
 
 enableRobotsTXT = true
 

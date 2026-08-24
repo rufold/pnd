@@ -1,0 +1,8 @@
+locale = "en-UK"
+label = "English"
+weight = 2
+title = "Painting's not dead"
+
+[params]
+isoCode = "en"
+displayName = "English"
