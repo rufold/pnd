@@ -5,4 +5,4 @@ build:
   list: never
 ---
 
-*(English translation pending.)*
+English translation pending.

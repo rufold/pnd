@@ -6,6 +6,10 @@
 
     <h1 class="supporters-title">{{ .Title }}</h1>
 
+    {{ with .Content }}
+    <div class="supporters-intro">{{ . }}</div>
+    {{ end }}
+
     <div class="supporters-directory">
 
         {{ $supportersRaw := where .Site.Pages "Section" "persons" }}

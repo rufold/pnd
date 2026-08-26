@@ -3,16 +3,73 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>http://localhost:1313/en/</loc>
+    <loc>http://localhost:8601/en/news/</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
     <xhtml:link
       rel="alternate"
       hreflang="pl-PL"
-      href="http://localhost:1313/"
+      href="http://localhost:8601/news/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="en-UK"
-      href="http://localhost:1313/en/"
+      href="http://localhost:8601/en/news/"
+    />
+  </url>
+  <url>
+    <loc>http://localhost:8601/en/</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <xhtml:link
+      rel="alternate"
+      hreflang="pl-PL"
+      href="http://localhost:8601/"
+    />
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-UK"
+      href="http://localhost:8601/en/"
+    />
+  </url>
+  <url>
+    <loc>http://localhost:8601/en/news/post1/</loc>
+    <lastmod>2026-08-19T00:00:00+00:00</lastmod>
+    <xhtml:link
+      rel="alternate"
+      hreflang="pl-PL"
+      href="http://localhost:8601/news/post1/"
+    />
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-UK"
+      href="http://localhost:8601/en/news/post1/"
+    />
+  </url>
+  <url>
+    <loc>http://localhost:8601/en/news/post2/</loc>
+    <lastmod>2026-08-14T00:00:00+00:00</lastmod>
+    <xhtml:link
+      rel="alternate"
+      hreflang="pl-PL"
+      href="http://localhost:8601/news/post2/"
+    />
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-UK"
+      href="http://localhost:8601/en/news/post2/"
+    />
+  </url>
+  <url>
+    <loc>http://localhost:8601/en/news/post3/</loc>
+    <lastmod>2026-08-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+      rel="alternate"
+      hreflang="pl-PL"
+      href="http://localhost:8601/news/post3/"
+    />
+    <xhtml:link
+      rel="alternate"
+      hreflang="en-UK"
+      href="http://localhost:8601/en/news/post3/"
     />
   </url>
 </urlset>
