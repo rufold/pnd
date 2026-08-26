@@ -21,6 +21,11 @@ url = "https://pnd.org.pl"
 weight = 6
 
 [[main]]
+name = "kontakt"
+url = "/#contact"
+weight = 7
+
+[[main]]
 name = ""
 pre = "facebook"
 url = "..."
