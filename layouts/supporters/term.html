@@ -31,7 +31,18 @@
         {{ $portrait := "" }}
         {{ if $image }}{{ $portrait = resources.Get (printf "images/%s" $image) }}{{ end }}
 
-        <div class="supporter">
+        {{ $bio := $supporter.Params.bio }}
+
+        {{ $website := partial "person-param.html" (dict "page" $supporter "key" "website") }}
+        {{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
+        {{ $website = printf "https://%s" $website }}
+        {{ end }}
+
+        {{ $instagram := partial "person-param.html" (dict "page" $supporter "key" "instagram") }}
+
+        {{ $isCompact := and (not $portrait) (not $bio) (not $website) (not $instagram) }}
+
+        <div class="supporter{{ if $isCompact }} supporter-compact{{ end }}">
 
             {{ if $portrait }}
             <img class="supporter-photo" src="{{ ($portrait.Fill (printf "240x240 %s" ($anchor | default "Smart"))).RelPermalink }}" alt="{{ $supporter.Title }}">
@@ -40,16 +51,9 @@
             <div class="supporter-info">
                 <h3>{{ $supporter.Title }}</h3>
 
-                {{ with $supporter.Params.bio }}
+                {{ with $bio }}
                 <p>{{ . }}</p>
                 {{ end }}
-
-                {{ $website := partial "person-param.html" (dict "page" $supporter "key" "website") }}
-                {{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
-                {{ $website = printf "https://%s" $website }}
-                {{ end }}
-
-                {{ $instagram := partial "person-param.html" (dict "page" $supporter "key" "instagram") }}
 
                 {{ if or $website $instagram }}
                 <div class="supporter-links">
