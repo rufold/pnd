@@ -8,7 +8,7 @@ title: "Polityka prywatności"
 
 Administratorem danych osobowych jest Fundacja Painting's not dead, Żuromino 206,
 83-323 Żuromino, Polska, KRS 001255531 ("Administrator"). Kontakt w sprawach
-ochrony danych: harmozamikolaj@wp.pl.
+ochrony danych: [harmozamikolaj@wp.pl](mailto:harmozamikolaj@wp.pl).
 
 ## 2. Jakie dane zbieramy
 

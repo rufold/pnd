@@ -8,7 +8,7 @@ title: "Privacy Policy"
 
 The data controller is Painting's not dead Foundation, Żuromino 206, 83-323 Żuromino,
 Poland, registration number (KRS) 001255531 ("Controller"). Contact for data
-protection matters: harmozamikolaj@wp.pl.
+protection matters: [harmozamikolaj@wp.pl](mailto:harmozamikolaj@wp.pl).
 
 ## 2. What data we collect
 
@@ -46,7 +46,7 @@ your data, to data portability, to object to processing, and to lodge a
 complaint with the Polish data protection authority (UODO) or your local
 supervisory authority.
 
-## 7. Voluntary provision of
+## 7. Voluntary provision of data
 
 Providing your data is voluntary but necessary to process your application
 or respond to your inquiry.
