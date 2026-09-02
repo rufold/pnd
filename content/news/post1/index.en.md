@@ -1,10 +1,11 @@
 ---
-title: "post 1 (EN)"
+title: "Berlin"
 date: 2026-08-19
-description: "description 1 (EN)"
-featureimage: "pic1.jpg"
-persons: ["mikolaj", "jaroslaw"]
+# description: "description 1 (EN)"
+# featureimage: "pic1.jpg"
+persons: ["mikolaj"]
 ---
 
-post content (EN)
-![image](pic1.jpg)
+<https://www.youtube.com/watch?v=KvAoZzAL4OE>
+
+<https://www.youtube.com/watch?v=7w2MIPAKoA0>
