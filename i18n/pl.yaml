@@ -4,9 +4,9 @@ site:
     artystyczna 
 
 news:
-  heading: "Działalność"
+  heading: "co nowego?"
 
 member:
-  activityLink: "moja działalność"
+  activityLink: "twórczość"
   websiteLink: "strona internetowa"
   instagramLink: "instagram"

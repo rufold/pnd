@@ -4,9 +4,9 @@ site:
     collective
 
 news:
-  heading: "Activity"
+  heading: "what's new?"
 
 member:
-  activityLink: "my activity"
+  activityLink: "..."
   websiteLink: "website"
   instagramLink: "instagram"
