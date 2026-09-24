@@ -1,8 +1,7 @@
 {{ define "main" }}
-{{ $customCSS := resources.Get "css/custom.css" | fingerprint }}
 {{ $js := resources.Get "js/index.js" | fingerprint }}
 <script src="{{ $js.RelPermalink}}" integrity="{{ $js.Data.Integrity }}" defer></script>
-<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
+{{ partial "custom-css.html" . }}
 
 <div class="team-page">
 
@@ -22,20 +21,10 @@
 
     <section class="team">
 
-        {{ $peopleRaw := where .Site.Pages "Section" "persons" }}
-        {{ $peopleRaw = where $peopleRaw "Kind" "term" }}
-        {{ $peopleRaw = where $peopleRaw "Parent.Kind" "taxonomy" }}
-        {{ $peopleRaw = where $peopleRaw "File.ContentBaseName" "!=" "supporters" }}
-
-        {{ $people := slice }}
-        {{ range $peopleRaw }}
-        {{ $weight := partial "person-param.html" (dict "page" . "key" "weight") }}
-        {{ $people = $people | append (dict "page" . "weight" $weight) }}
-        {{ end }}
-        {{ $people = sort $people "weight" }}
+        {{ $people := partial "persons-sorted.html" (dict "parent" (site.GetPage "/persons") "exclude" "supporters") }}
 
         {{ range $people }}
-        {{ $person := .page }}
+        {{ $person := . }}
 
         {{ $image := partial "person-param.html" (dict "page" $person "key" "image") }}
         {{ $anchor := partial "person-param.html" (dict "page" $person "key" "anchor") }}
@@ -45,10 +34,7 @@
 
             {{ if $portrait }}
 
-            {{ $website := partial "person-param.html" (dict "page" $person "key" "website") }}
-            {{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
-            {{ $website = printf "https://%s" $website }}
-            {{ end }}
+            {{ $website := partial "person-website.html" $person }}
 
             <a href="#" class="member-link" data-member="{{ $person.File.ContentBaseName }}" data-image="{{ $portrait.RelPermalink }}"
                 data-name="{{ $person.Title }}" data-bio="{{ $person.Params.bio }}" data-website="{{ $website }}">
@@ -74,7 +60,7 @@
 
     <section id="news" class="news-section">
 
-        <h2>{{ i18n "news.heading" }}</h2>
+        <h2 class="section-title">{{ i18n "news.heading" }}</h2>
 
         <div class="news-grid">
 
@@ -84,13 +70,9 @@
 
             <a href="{{ .RelPermalink }}" class="news-card">
 
-                <!-- {{ with .Resources.GetMatch "*.{jpg,jpeg,png,webp}" }}
-                <img src="{{ .RelPermalink }}" alt="{{ $.Title }}">
-                {{ end }} -->
-
                 <div class="news-card-content">
                     <h3>{{ .Title }}</h3>
-                    <time datetime="{{ .Date.Format " 2006-01-02" }}">
+                    <time datetime="{{ .Date.Format "2006-01-02" }}">
                         {{ .Date.Format "02.01.2006" }}
                     </time>
 
@@ -131,9 +113,5 @@
         {{ partial "manifest.html" . }}
     </div>
 </div>
-
-<script>
-
-</script>
 
 {{ end }}

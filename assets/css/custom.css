@@ -62,7 +62,7 @@ html {
 
 /* ---------- Section labels ---------- */
 
-.news-section h2 {
+.section-title {
     text-align: center;
 
     font-family: 'Fraunces', Georgia, serif;
@@ -396,17 +396,8 @@ html {
     padding-top: 4rem;
 }
 
-.supporters-title {
-    text-align: center;
-
-    font-family: 'Fraunces', Georgia, serif;
-    font-optical-sizing: auto;
-    font-weight: 440;
-    font-size: 1.6rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-
-    margin: 0 0 3rem;
+.supporters-page .section-title {
+    margin-top: 0;
 }
 
 .supporters-intro {
@@ -531,11 +522,7 @@ html {
         grid-template-columns: 1fr;
     }
 
-    .news-section h2 {
-        font-size: 1.2rem;
-    }
-
-    .supporters-title {
+    .section-title {
         font-size: 1.2rem;
     }
 

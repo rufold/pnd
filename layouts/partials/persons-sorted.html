@@ -1,0 +1,17 @@
+{{/* Returns the person terms whose parent is .parent, sorted by their "weight"
+     param (resolved via person-param.html, so translations inherit it).
+     Pass .exclude to skip a term by its content base name. */}}
+{{ $parent := .parent }}
+{{ $exclude := .exclude | default "" }}
+{{ $persons := slice }}
+{{ range where (where site.Pages "Section" "persons") "Kind" "term" }}
+{{ if and (.Parent.Eq $parent) (ne .File.ContentBaseName $exclude) }}
+{{ $weight := partial "person-param.html" (dict "page" . "key" "weight") }}
+{{ $persons = $persons | append (dict "page" . "weight" $weight) }}
+{{ end }}
+{{ end }}
+{{ $sorted := slice }}
+{{ range sort $persons "weight" }}
+{{ $sorted = $sorted | append .page }}
+{{ end }}
+{{ return $sorted }}

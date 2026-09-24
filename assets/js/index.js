@@ -1,19 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("member-modal");
+    const memberModal = document.getElementById("member-modal");
     const modalImage = document.getElementById("modal-image");
     const modalName = document.getElementById("modal-name");
     const modalBio = document.getElementById("modal-bio");
     const modalWebsite = document.getElementById("modal-website");
-    const closeButton = document.getElementById("modal-close");
     const manifestoModal = document.getElementById("manifesto-modal");
-    const manifestoOpen = document.getElementById("open-manifesto");
-    const manifestoClose = document.getElementById("manifesto-close");
-    const manifestoMenuLink = document.querySelector(".manifesto-menu-link");
+
+    const open = modal => modal.classList.add("open");
+    const close = modal => modal.classList.remove("open");
+
+    function swallow(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    // Member modal
 
     document.querySelectorAll(".member-link").forEach(link => {
         link.addEventListener("click", event => {
-            event.preventDefault();
-            event.stopPropagation();
+            swallow(event);
 
             modalImage.src = link.dataset.image;
             modalImage.alt = link.dataset.name;
@@ -29,105 +34,60 @@ document.addEventListener("DOMContentLoaded", () => {
                 modalWebsite.style.display = "none";
             }
 
-            modal.classList.add("open");
+            open(memberModal);
         }, true);
     });
 
-    modalImage.addEventListener("click", event => {
-        event.preventDefault();
-        event.stopPropagation();
-    }, true);
-
+    // Keep the theme's image zoom from grabbing portrait clicks.
+    modalImage.addEventListener("click", swallow, true);
     document.querySelectorAll(".member-portrait").forEach(image => {
-        image.addEventListener("click", event => {
-            event.preventDefault();
-            event.stopPropagation();
-        })
-    })
-
-    closeButton.addEventListener("click", () => {
-        modal.classList.remove("open");
+        image.addEventListener("click", swallow);
     });
 
-    modal.addEventListener("click", (event) => {
-        if (event.target == modal) {
-            modal.classList.remove("open");
-        }
-    });
+    document.getElementById("modal-close").addEventListener("click", () => close(memberModal));
 
-    document.addEventListener("keydown", (event) => {
-        if (event.key == "Escape") {
-            modal.classList.remove("open");
-        }
-    });
-
-    function openManifesto(event) {
-        event.preventDefault();
-        manifestoModal.classList.add("open");
-    }
-
-
-    function closeManifesto() {
-        manifestoModal.classList.remove("open");
-    }
-
-
-    if (manifestoOpen) {
-        manifestoOpen.addEventListener("click", openManifesto);
-    }
+    // Manifesto modal
 
     if (location.hash === "#manifesto") {
-        manifestoModal.classList.add("open");
+        open(manifestoModal);
     }
 
+    document.getElementById("manifesto-close")?.addEventListener("click", () => close(manifestoModal));
 
-    document.addEventListener("click", (event) => {
-        const menuLink = event.target.closest('a[href$="#manifesto"]');
+    // Shared modal behaviour: click on backdrop or Escape closes.
 
-        if (menuLink) {
-            openManifesto(event);
-        }
+    [memberModal, manifestoModal].forEach(modal => {
+        modal.addEventListener("click", event => {
+            if (event.target === modal) {
+                close(modal);
+            }
+        });
     });
 
-    if (manifestoClose) {
-        manifestoClose.addEventListener("click", closeManifesto);
-    }
-
-    manifestoModal.addEventListener("click", (event) => {
-        if (event.target === manifestoModal) {
-            closeManifesto();
-        }
-    });
-
-
-    document.addEventListener("keydown", (event) => {
+    document.addEventListener("keydown", event => {
         if (event.key === "Escape") {
-            closeManifesto();
+            close(memberModal);
+            close(manifestoModal);
         }
     });
 
-    document.addEventListener("click", (event) => {
-        const newsLink = event.target.closest('a[href$="#news"]');
+    // Menu links: #manifesto opens the modal, section anchors scroll smoothly.
 
-        if (newsLink) {
+    const scrollTargets = ["news", "supporters"];
+
+    document.addEventListener("click", event => {
+        if (event.target.closest('a[href$="#manifesto"]')) {
             event.preventDefault();
-
-            document.getElementById("news")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+            open(manifestoModal);
+            return;
         }
-    });
-    document.addEventListener("click", (event) => {
-        const supportersLink = event.target.closest('a[href$="#supporters"]');
 
-        if (supportersLink) {
-            event.preventDefault();
-
-            document.getElementById("supporters")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        for (const id of scrollTargets) {
+            if (event.target.closest(`a[href$="#${id}"]`)) {
+                event.preventDefault();
+                document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                return;
+            }
         }
     });
 });

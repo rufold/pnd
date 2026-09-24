@@ -1,10 +1,9 @@
 {{ define "main" }}
-{{ $customCSS := resources.Get "css/custom.css" | fingerprint }}
-<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
+{{ partial "custom-css.html" . }}
 
 <div class="team-page supporters-page">
 
-    <h1 class="supporters-title">{{ .Title }}</h1>
+    <h1 class="section-title">{{ .Title }}</h1>
 
     {{ with .Content }}
     <div class="supporters-intro">{{ . }}</div>
@@ -12,19 +11,8 @@
 
     <div class="supporters-directory">
 
-        {{ $supportersRaw := where .Site.Pages "Section" "persons" }}
-        {{ $supportersRaw = where $supportersRaw "Kind" "term" }}
-        {{ $supportersRaw = where $supportersRaw "Parent.Title" .Title }}
-
-        {{ $supporters := slice }}
-        {{ range $supportersRaw }}
-        {{ $weight := partial "person-param.html" (dict "page" . "key" "weight") }}
-        {{ $supporters = $supporters | append (dict "page" . "weight" $weight) }}
-        {{ end }}
-        {{ $supporters = sort $supporters "weight" }}
-
-        {{ range $supporters }}
-        {{ $supporter := .page }}
+        {{ range partial "persons-sorted.html" (dict "parent" .) }}
+        {{ $supporter := . }}
 
         {{ $image := partial "person-param.html" (dict "page" $supporter "key" "image") }}
         {{ $anchor := partial "person-param.html" (dict "page" $supporter "key" "anchor") }}
@@ -32,12 +20,7 @@
         {{ if $image }}{{ $portrait = resources.Get (printf "images/%s" $image) }}{{ end }}
 
         {{ $bio := $supporter.Params.bio }}
-
-        {{ $website := partial "person-param.html" (dict "page" $supporter "key" "website") }}
-        {{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
-        {{ $website = printf "https://%s" $website }}
-        {{ end }}
-
+        {{ $website := partial "person-website.html" $supporter }}
         {{ $instagram := partial "person-param.html" (dict "page" $supporter "key" "instagram") }}
 
         {{ $isCompact := and (not $portrait) (not $bio) (not $website) (not $instagram) }}

@@ -1,0 +1,7 @@
+{{/* Returns the person's website param as an absolute URL, adding https://
+     when the scheme is missing. Empty when no website is set. */}}
+{{ $website := partial "person-param.html" (dict "page" . "key" "website") }}
+{{ if and $website (not (or (hasPrefix $website "http://") (hasPrefix $website "https://"))) }}
+{{ $website = printf "https://%s" $website }}
+{{ end }}
+{{ return $website }}
