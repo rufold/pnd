@@ -5,6 +5,8 @@ colorScheme = "congo"
 showImageZoom = false
 showImageInArticle = false
 showTaxonomies = true
+showWordCount = false
+showReadingTime = false
 
 [term]
 cardView = true
