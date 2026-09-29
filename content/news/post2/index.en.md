@@ -1,7 +1,7 @@
 ---
 title: "Berlin"
 date: 2026-08-19
-# description: "opis 1"
+# description: "description 1 (EN)"
 # featureimage: "pic1.jpg"
 persons: ["mikolaj"]
 ---
